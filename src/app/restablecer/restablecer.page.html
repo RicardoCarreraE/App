@@ -1,0 +1,31 @@
+<ion-content class="container" [fullscreen]="true" >
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title id="title">
+        Restablecer
+      </ion-title>
+      <img id="logo" src="/assets/logo.jpg" alt="">
+    </ion-toolbar>
+  </ion-header>
+
+  <form >
+    <ion-item>
+      <img id="user" src="/assets/user.png" alt="">
+    </ion-item>
+    <ion-item>
+      <ion-input label="{{textRut}}" labelPlacement="floating" placeholder="{{desRut}}"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="{{textPass}}" type="password" labelPlacement="floating" placeholder="{{desPass}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="{{repitaCont}}" type="password" labelPlacement="floating" placeholder="{{reingrese}}" ></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" color="success" [routerLink]="['/login']" fill="outline" >{{restablecer}}</ion-button>
+
+  
+  </form>
+</ion-content>
+

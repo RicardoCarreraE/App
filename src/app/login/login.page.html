@@ -1,0 +1,42 @@
+
+
+<ion-content class="container" [fullscreen]="true" >
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title id="title">
+        Login
+      </ion-title>
+      <img id="logo" src="/assets/logo.jpg" alt="">
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="alumno">
+    <ion-item>
+      <img id="user" src="/assets/user.png" alt="">
+    </ion-item>
+    <ion-item>
+      <ion-input label="{{textRut}}" labelPlacement="floating" placeholder="{{desRut}}" formControlName="rut"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="{{textPass}}" type="password" labelPlacement="floating" placeholder="{{desPass}}" formControlName="pass"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" color="success" [routerLink]="['/home']" fill="outline" (click)="inicio()">{{ingresar}}</ion-button>
+    
+    <ion-item>
+      <p>¿Olvidó su Contraseña?</p> <a [routerLink]="['/restablecer']" id="olvido">Restablecer</a>
+    </ion-item>
+
+    <ion-button color="success" [routerLink]="['#']" fill="outline">{{crearCta}}</ion-button>
+  
+  </form>
+</ion-content>
+
+
+
+
+
+
+
+

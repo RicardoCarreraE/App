@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title id="title">CONDUCTOR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="body" [fullscreen]="true">
+<ion-item>  
+  <h1>Bienvenido:</h1>
+</ion-item>
+<ion-item>
+  <ion-button expand="block" color="success"[routerLink]="['/perfil-chofer']" fill="outline">Perfil</ion-button>
+</ion-item>
+<ion-item>
+  <ion-button expand="block" color="success"[routerLink]="['/auto-chofer']" fill="outline">Mi Auto</ion-button>
+</ion-item>
+<ion-item>
+  <ion-button expand="block" color="success"[routerLink]="['/#']" fill="outline">Mis Viajes</ion-button>
+</ion-item>
+<ion-item>
+  <ion-button expand="block" color="success"[routerLink]="['/#']" fill="outline">Viaje En Ruta</ion-button>
+</ion-item>
+<ion-item>
+  <p>Asientos Disponibles: </p>
+</ion-item>
+
+
+</ion-content>
