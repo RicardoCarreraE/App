@@ -1,20 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title id="title">ALUMNO</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button [routerLink]="['/login']"></ion-back-button>
+  </ion-buttons>
+  <ion-title id="title">ALUMNO</ion-title>
+</ion-toolbar>
+
 
 <ion-content [fullscreen]="true">
-<ion-item>  
-  <h1>Bienvenido:</h1>
+  
+  <ion-item>
+    <h1>Bienvenido {{usuario.nombre}}</h1>
 </ion-item>
 <ion-item>
-  <ion-button expand="block" color="success"[routerLink]="['/#']" fill="outline">Perfil</ion-button>
-</ion-item><ion-item>
-  <ion-button expand="block" color="success"[routerLink]="['/#']" fill="outline">Mis Viajes</ion-button>
-</ion-item><ion-item>
-  <ion-button expand="block" color="success"[routerLink]="['/#']" fill="outline">Viaje En Ruta</ion-button>
+  <ion-button expand="block" color="success"[routerLink]="['/perfil-alumno']" fill="outline">Perfil</ion-button>
 </ion-item>
-
+<ion-item>
+  <ion-button expand="block" color="success"[routerLink]="['/mis-viajes-alumno']" fill="outline">Mis Viajes</ion-button>
+</ion-item>
+<ion-item>
+  <ion-button expand="block" color="success"[routerLink]="['/viaje-ruta-alumno']" fill="outline">Viaje En Ruta</ion-button>
+</ion-item>
 
 </ion-content>

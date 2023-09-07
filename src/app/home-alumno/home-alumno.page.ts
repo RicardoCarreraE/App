@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginPage } from '../login/login.page';
+import { Router, ActivatedRoute } from '@angular/router';
+import { usuarios } from '../usuarios';
 
 @Component({
   selector: 'app-home-alumno',
@@ -7,10 +8,25 @@ import { LoginPage } from '../login/login.page';
   styleUrls: ['./home-alumno.page.scss'],
 })
 export class HomeAlumnoPage implements OnInit {
+ usuario:any;
 
-  constructor() { }
-
+constructor(private activatedRoute: ActivatedRoute) { 
+  this.activatedRoute.queryParams.subscribe((params)=>{
+    const userId = params['id'];
+    
+      this.usuario = usuarios.find((usuarios) => userId.id === parseInt(userId, 10));
+    }
+  
+    )};
   ngOnInit() {
   }
 
 }
+
+
+
+
+
+
+
+

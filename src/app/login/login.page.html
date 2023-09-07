@@ -1,5 +1,4 @@
 
-
 <ion-content class="container" [fullscreen]="true" >
   <ion-header [translucent]="true">
     <ion-toolbar>
@@ -15,14 +14,17 @@
       <img id="user" src="/assets/user.png" alt="">
     </ion-item>
     <ion-item>
-      <ion-input label="{{textRut}}" labelPlacement="floating" placeholder="{{desRut}}" formControlName="rut"></ion-input>
+      <ion-input label="{{textRut}}" labelPlacement="floating" placeholder="{{desRut}}" formControlName="rut" id="rut-alumno"></ion-input>
+
     </ion-item>
 
     <ion-item>
-      <ion-input label="{{textPass}}" type="password" labelPlacement="floating" placeholder="{{desPass}}" formControlName="pass"></ion-input>
+      <ion-input label="{{textPass}}" type="password" labelPlacement="floating" placeholder="{{desPass}}" formControlName="pass" id="pass-alumno"></ion-input>
+
     </ion-item>
 
-    <ion-button expand="block" color="success" [routerLink]="['/home']" fill="outline" (click)="inicio()">{{ingresar}}</ion-button>
+    <ion-button expand="block" color="success" fill="outline" (click)="inicio()">{{ingresar}}</ion-button>
+
     
     <ion-item>
       <p>¿Olvidó su Contraseña?</p> <a [routerLink]="['/restablecer']" id="olvido">Restablecer</a>
@@ -32,11 +34,3 @@
   
   </form>
 </ion-content>
-
-
-
-
-
-
-
-
