@@ -1,58 +1,68 @@
 #container {
-    text-align: center;
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+#title{
+  text-align: center;
+}
+#logo{
+  margin-top: 30px;
+  width: 150px;
+  height: auto;
+} 
+#user{
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  #container strong {
-    font-size: 20px;
-    line-height: 26px;
-  }
-  
-  #container p {
-    font-size: 16px;
-    line-height: 22px;
-  
-    color: #8c8c8c;
-  
-    margin: 0;
-  }
-  
-  #container a {
-    text-decoration: none;
-  }
-  #title{
-    text-align: center;
-  }
-  #logo{
-    margin-top: 30px;
-    width: 150px;
-    height: auto;
-  } 
-  #user{
-    width: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-  }
-  .container{
-    color: white;
-  }
-#boton{
- cursor: pointer;
+}
+.container{
+  color: white;
 }
 
 
 
+ion-content.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente en el eje X */
+  justify-content: center; /* Centra verticalmente en el eje Y */
+  height: 100vh; /* Ocupa la altura completa del viewport */
+}
 
+ion-item img#user {
+  margin: 0 auto; /* Centra horizontalmente la imagen */
+  display: block; /* Asegura que la imagen sea un elemento de bloque */
+}
 
-
-
+/* Estilo opcional para separar la imagen de los campos de entrada */
+.centered-image {
+  margin-bottom: 20px;
+}
 
 
 

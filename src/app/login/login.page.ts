@@ -18,21 +18,18 @@ export class LoginPage implements OnInit {
   ingresar = "Ingresar";
   crearCta = "Crear Cuenta";
 
-  alumno = new FormGroup ({
+  usuario = new FormGroup ({
     rut: new FormControl('',[Validators.required, Validators.minLength(1), Validators.maxLength(12)]),
     pass: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
   });   
-   chofer = new FormGroup ({
-    rut: new FormControl('',[Validators.required, Validators.minLength(1), Validators.maxLength(12)]),
-    pass: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
-  });  
+    
 
   constructor(private router: Router, private alertController: AlertController) { }
   
   async inicio(){
     // Obtiene el valor del rut y contraseña ingresados
-    const rutIngresado = this.alumno.value.rut;
-    const passIngresado = this.alumno.value.pass;
+    const rutIngresado = this.usuario.value.rut;
+    const passIngresado = this.usuario.value.pass;
 
     // Busca al usuario en la lista de usuarios
     const usuario = usuarios.find((user) => user.rut === rutIngresado && user.contraseña === passIngresado);
@@ -53,18 +50,20 @@ export class LoginPage implements OnInit {
   }
 
   redirigirSegunRol(rol: string, usuario: any) {
+    let setData: NavigationExtras = {
+      state: { user: this.usuario.value.rut }
+    };
     switch (rol) {
       case 'alumno':
-        this.router.navigate(['/home-alumno']);
+        this.router.navigate(['/home-alumno'], setData );
         break;
       case 'chofer':
         let chofer: NavigationExtras = {
-          state: { chofer: usuario }, // usuario es el objeto del chofer
+          state: { user: this.usuario.value.rut }, // usuario es el objeto del chofer
         };
         this.router.navigate(['/home-chofer'], chofer);
         break;
       default:
-        console.log('Rol no reconocido');
     }
   }
 

@@ -1,4 +1,3 @@
-
 // usuarios.ts
 
 export const usuarios = [
@@ -59,7 +58,8 @@ export const usuarios = [
       rol: 'chofer',
     },
   ];
-  
+ 
+ 
 
   
   
