@@ -4,11 +4,14 @@
   <ion-header [translucent]="true">
     <ion-toolbar>
       <ion-title id="title">
-        Login
+        Inicio de sesión
       </ion-title>
-      <img id="logo" src="/assets/logo.jpg" alt="">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <img id="logo" src="/assets/logo.png" alt="" style="margin-top: -28px; margin-bottom: -25px;">
+      </div>
     </ion-toolbar>
   </ion-header>
+  
 
   <form [formGroup]="alumno">
     <ion-item>
@@ -30,10 +33,15 @@
     <ion-item>
       <p>¿Olvidó su Contraseña?</p> <a [routerLink]="['/restablecer']" id="olvido">Restablecer</a>
     </ion-item>
-
-    <ion-button color="success" [routerLink]="['#']" fill="outline">{{crearCta}}</ion-button>
-  
   </form>
+  <ion-content class="container" [fullscreen]="true">
+    <!-- Resto de tu contenido HTML -->
+  
+    <!-- Div del auto para la animación -->
+    <div class="car-animation" *ngIf="loading">
+      <!-- Este div representa el auto y se moverá según la animación CSS -->
+    </div>
+  </ion-content>
 </ion-content>
 
 
