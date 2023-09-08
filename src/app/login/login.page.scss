@@ -103,3 +103,33 @@ ion-item img#user {
     left: calc(100% + 100px); /* Fin: el auto se desplaza hacia la derecha */
   }
 }
+
+/* Estilos de botones personalizados */
+ion-button {
+  --ion-background-color: $color-primario;
+  --ion-color-base: #fff;
+  font-weight: bold;
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+ion-button:hover {
+  --ion-background-color: darken($color-primario, 10%); /* Cambia el color al pasar el ratón */
+}
+
+/* Estilos personalizados para los cuadros de texto */
+.custom-input {
+  --border-color: #3498db; /* Color del borde cuando el cuadro de texto no está enfocado */
+  --highlight-color: #e74c3c; /* Color del borde cuando el cuadro de texto está enfocado */
+  --text-color: #333; /* Color del texto en el cuadro de texto */
+
+  /* Aplicar estilos a los cuadros de texto */
+  ion-label {
+    color: var(--text-color);
+  }
+
+  ion-input {
+    --highlight-color-focused: var(--highlight-color);
+    --border-color: var(--border-color);
+    color: var(--text-color);
+  }
+}
