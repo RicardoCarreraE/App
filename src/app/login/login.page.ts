@@ -10,7 +10,7 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  loading = false;
   textRut = "Rut";
   textPass = "Contraseña";
   desRut = "Ingrese Rut";
@@ -27,27 +27,37 @@ export class LoginPage implements OnInit {
   constructor(private router: Router, private alertController: AlertController) { }
   
   async inicio(){
+    // Establece loading en true para mostrar la animación
+    this.loading = true;
+  
     // Obtiene el valor del rut y contraseña ingresados
     const rutIngresado = this.usuario.value.rut;
     const passIngresado = this.usuario.value.pass;
-
-    // Busca al usuario en la lista de usuarios
-    const usuario = usuarios.find((user) => user.rut === rutIngresado && user.contraseña === passIngresado);
-
-    if (usuario) {
-      // Redirige al usuario al perfil correspondiente según su rol
-      this.redirigirSegunRol(usuario.rol, usuario);
-    } else {
-      // Las credenciales son incorrectas, muestra una alerta
-      const alert = await this.alertController.create({
-        header: 'Credenciales Incorrectas',
-        message: 'Por favor, vuelva a intentar.',
-        buttons: ['OK']
-      });
   
-      await alert.present();
-    }
+    // Simula una demora de 2 segundos para la lógica de inicio de sesión (debes ajustar esto)
+    setTimeout(async () => {
+      // Simulación de inicio de sesión exitoso
+      const usuario = usuarios.find((user) => user.rut === rutIngresado && user.contraseña === passIngresado);
+  
+      if (usuario) {
+        // Redirige al usuario al perfil correspondiente según su rol
+        this.redirigirSegunRol(usuario.rol, usuario);
+      } else {
+        // Las credenciales son incorrectas, muestra una alerta
+        const alert = await this.alertController.create({
+          header: 'Credenciales Incorrectas',
+          message: 'Por favor, vuelva a intentar.',
+          buttons: ['OK']
+        });
+  
+        await alert.present();
+      }
+  
+      // Establece loading en false después de completar la acción
+      this.loading = false;
+    }, 1200); // Simula una demora de 2 segundos (ajusta esto según tu lógica real)
   }
+  
 
   redirigirSegunRol(rol: string, usuario: any) {
     let setData: NavigationExtras = {
