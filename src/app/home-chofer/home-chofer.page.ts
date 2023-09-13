@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { usuarios } from '../usuarios';
 
+
 @Component({
   selector: 'app-home-chofer',
   templateUrl: './home-chofer.page.html',
   styleUrls: ['./home-chofer.page.scss'],
 })
 export class HomeChoferPage implements OnInit {
+
   usuario: any; 
   chofer: any;
 
@@ -18,6 +20,7 @@ export class HomeChoferPage implements OnInit {
         this.usuario = usuarios.find((usuarios) => userId.id === parseInt(userId));
       }
   )};
+
 
   ngOnInit() {
     // Obtener el objeto de usuario del estado del enrutador

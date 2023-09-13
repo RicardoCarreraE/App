@@ -1,10 +1,13 @@
 <ion-content class="container" [fullscreen]="true" >
   <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title id="title">
-        Restablecer
+      <ion-buttons slot="start">
+        <!-- Botón "Volver" para regresar a la página anterior -->
+        <ion-back-button defaultHref="/home-alumno"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+       Restablecer
       </ion-title>
-      <img id="logo" src="/assets/logo.jpg" alt="">
     </ion-toolbar>
   </ion-header>
 

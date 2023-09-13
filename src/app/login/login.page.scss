@@ -1,6 +1,6 @@
+/* Estilos generales */
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
@@ -16,36 +16,36 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-
   color: #8c8c8c;
-
   margin: 0;
 }
 
 #container a {
   text-decoration: none;
 }
-#title{
+
+#title {
   text-align: center;
 }
-#logo{
+
+#logo {
   margin-top: 30px;
   width: 150px;
   height: auto;
-} 
-#user{
+}
+
+#user {
   width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
-.container{
+
+.container {
   color: white;
 }
 
-
-
+/* Estilos específicos para ion-content */
 ion-content.container {
   display: flex;
   flex-direction: column;
@@ -64,7 +64,72 @@ ion-item img#user {
   margin-bottom: 20px;
 }
 
+.car-animation {
+  /* Define la apariencia del auto (puedes ajustar esto según tus necesidades) */
+  width: 100px;
+  height: 50px;
+  background-color: #008000; /* Color del auto (verde en este ejemplo) */
+  position: relative;
+  animation: moveCar 2s linear infinite; /* Define la animación llamada moveCar */
 
+  /* Agrega otros estilos, como posición inicial, si es necesario */
+  left: -100px;
+  background: linear-gradient(to bottom, #008000, #005000); /* Aplicar un gradiente verde */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Agregar sombreado */
+  border-radius: 5px; /* Hacer las esquinas del auto un poco redondeadas */
+}
 
+.car-wheel {
+  width: 20px;
+  height: 20px;
+  background-color: #000; /* Color de las ruedas */
+  position: absolute;
+  bottom: 5px;
+}
 
+.car-wheel.left {
+  left: 10px;
+}
 
+.car-wheel.right {
+  right: 10px;
+}
+/* Define la animación moveCar */
+@keyframes moveCar {
+  0% {
+    left: -100px; /* Inicio: el auto está fuera de la pantalla a la izquierda */
+  }
+  100% {
+    left: calc(100% + 100px); /* Fin: el auto se desplaza hacia la derecha */
+  }
+}
+
+/* Estilos de botones personalizados */
+ion-button {
+  --ion-background-color: $color-primario;
+  --ion-color-base: #fff;
+  font-weight: bold;
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+ion-button:hover {
+  --ion-background-color: darken($color-primario, 10%); /* Cambia el color al pasar el ratón */
+}
+
+/* Estilos personalizados para los cuadros de texto */
+.custom-input {
+  --border-color: #3498db; /* Color del borde cuando el cuadro de texto no está enfocado */
+  --highlight-color: #e74c3c; /* Color del borde cuando el cuadro de texto está enfocado */
+  --text-color: #333; /* Color del texto en el cuadro de texto */
+
+  /* Aplicar estilos a los cuadros de texto */
+  ion-label {
+    color: var(--text-color);
+  }
+
+  ion-input {
+    --highlight-color-focused: var(--highlight-color);
+    --border-color: var(--border-color);
+    color: var(--text-color);
+  }
+}
