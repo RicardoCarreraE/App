@@ -55,6 +55,11 @@ const routes: Routes = [
     path: 'auto-chofer',
     loadChildren: () => import('./auto-chofer/auto-chofer.module').then( m => m.AutoChoferPageModule)
   },
+  {
+    path: '**',
+    loadChildren: () => import('./notfound404/notfound404.module').then( m => m.Notfound404PageModule)
+  },
+
 ];
 
 @NgModule({
