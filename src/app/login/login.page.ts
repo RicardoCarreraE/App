@@ -55,7 +55,7 @@ export class LoginPage implements OnInit {
   
       // Establece loading en false después de completar la acción
       this.loading = false;
-    }, 1200); // Simula una demora de 2 segundos (ajusta esto según tu lógica real)
+    }, 2000); // Simula una demora de 2 segundos (ajusta esto según tu lógica real)
   }
   
 
