@@ -11,23 +11,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<ion-item>
-  <p>Nombre: </p>
-</ion-item>
-<ion-item>
-  <p>Apellido: </p>
-</ion-item>
-<ion-item>
-  <p>Rut: </p>
-</ion-item>
-<ion-item>
-  <p>Correo: </p>
-</ion-item>
-<ion-item>
-  <p>Teléfono: </p>
-</ion-item>
-
-<ion-button [routerLink]="['/home-chofer']">
-  Volver
-</ion-button>
+  <ion-item>
+    <h4>Nombre: {{ alumno?.nombre }}</h4>
+  </ion-item>
+  <ion-item>
+    <h4>Rut: {{ alumno?.rut }}</h4>
+  </ion-item>
+  <ion-item>
+    <h4>Correo:{{ alumno?.correo }}</h4>
+  </ion-item>
+  <ion-item>
+    <h4>Teléfono:{{ alumno?.telefono }} </h4>
+  </ion-item>
 </ion-content>

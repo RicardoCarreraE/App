@@ -1,4 +1,3 @@
-
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -11,19 +10,17 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content [fullscreen]="true">
-  
   <ion-item>
-    <h1>Bienvenido {{alumno}}</h1>
-</ion-item>
-<ion-item>
-  <ion-button expand="block" color="success"[routerLink]="['/perfil-alumno']" fill="outline">Perfil</ion-button>
-
-</ion-item><ion-item>
-  <ion-button expand="block" color="success"[routerLink]="['/mis-viajes-alumno']" fill="outline">Mis Viajes</ion-button>
-</ion-item><ion-item>
-  <ion-button expand="block" color="success"[routerLink]="['/viaje-ruta-alumno']" fill="outline">Viaje En Ruta</ion-button>
-</ion-item>
-
+    <h1>Bienvenido {{ alumno?.nombre }}</h1> <!-- Accedemos a la propiedad 'nombre' del objeto 'alumno' -->
+  </ion-item>
+  <ion-item>
+    <ion-button expand="block" color="success" [routerLink]="['/perfil-alumno']" [state]="{ user: alumno }" fill="outline">Perfil</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-button expand="block" color="success" [routerLink]="['/mis-viajes-alumno']" fill="outline">Mis Viajes</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-button expand="block" color="success" [routerLink]="['/viaje-ruta-alumno']" fill="outline">Viaje En Ruta</ion-button>
+  </ion-item>
 </ion-content>

@@ -21,6 +21,9 @@ export class LoginPage implements OnInit {
   usuario = new FormGroup ({
     rut: new FormControl('',[Validators.required, Validators.minLength(1), Validators.maxLength(12)]),
     pass: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
+    nombre: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
+    correo: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
+    telefono: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
   });   
     
 
@@ -57,23 +60,26 @@ export class LoginPage implements OnInit {
       this.loading = false;
     }, 1200);   }
 
-  redirigirSegunRol(rol: string, usuario: any) {
-    let setData: NavigationExtras = {
-      state: { user: this.usuario.value.rut }
-    };
-    switch (rol) {
-      case 'alumno':
-        this.router.navigate(['/home-alumno'], setData );
-        break;
-      case 'chofer':
-        let chofer: NavigationExtras = {
-          state: { user: this.usuario.value.rut }, // usuario es el objeto del chofer
-        };
-        this.router.navigate(['/home-chofer'], chofer);
-        break;
-      default:
+    redirigirSegunRol(rol: string, usuario: any) {
+      let rutaInicio = '';
+    
+      switch (rol) {
+        case 'alumno':
+          rutaInicio = '/home-alumno';
+          break;
+        case 'chofer':
+          rutaInicio = '/home-chofer';
+          break;
+        default:
+          rutaInicio = '/login'; // Redirige al login si el rol es desconocido
+      }
+    
+      const navigationExtras: NavigationExtras = {
+        state: { user: usuario }
+      };
+    
+      this.router.navigate([rutaInicio], navigationExtras);
     }
-  }
 
   ngOnInit() {
   }

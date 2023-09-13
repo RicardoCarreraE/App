@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-alumno',
@@ -8,23 +7,20 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./home-alumno.page.scss'],
 })
 export class HomeAlumnoPage implements OnInit {
- 
- alumno: any;
- 
+  alumno: any;
 
-constructor(private activatedRoute: ActivatedRoute, private router: Router) { 
-  this.activatedRoute.queryParams.subscribe(params => {
-    if (this.router.getCurrentNavigation()?.extras.state) {
-        this.alumno = this.router.getCurrentNavigation()?.extras.state?.['user'];
-  
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation && navigation.extras.state) {
+      this.alumno = navigation.extras.state['user'];
     }
-});
-    }
-
-  ngOnInit() {
   }
 
+  ngOnInit() {}
 }
+
+
+
 
 
 

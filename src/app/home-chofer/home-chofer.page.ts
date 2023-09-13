@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { usuarios } from '../usuarios';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -10,21 +9,15 @@ import { usuarios } from '../usuarios';
 })
 export class HomeChoferPage implements OnInit {
 
-  usuario: any; 
-  chofer: any;
+  alumno: any;
 
-  constructor(private activatedRoute: ActivatedRoute) { 
-    this.activatedRoute.queryParams.subscribe((params)=>{
-      const userId = params['id'];
-      
-        this.usuario = usuarios.find((usuarios) => userId.id === parseInt(userId));
-      }
-  )};
-
-
-  ngOnInit() {
-    // Obtener el objeto de usuario del estado del enrutador
-    this.chofer = this.activatedRoute.snapshot.paramMap.get('chofer');
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation && navigation.extras.state) {
+      this.alumno = navigation.extras.state['user'];
+    }
   }
+
+  ngOnInit() {}
 }
 
