@@ -58,5 +58,11 @@ export const usuarios = [
       rol: 'chofer',
     },
   ];
+
   
+
+function obtenerUsuario(id: any, number: any) {
+  throw new Error("Function not implemented.");
+}
+
   

@@ -18,25 +18,18 @@ export class LoginPage implements OnInit {
   ingresar = "Ingresar";
   crearCta = "Crear Cuenta";
 
-  alumno = new FormGroup ({
+  usuario = new FormGroup ({
     rut: new FormControl('',[Validators.required, Validators.minLength(1), Validators.maxLength(12)]),
     pass: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
-  });
-
-  loading = false; // Variable para controlar la pantalla de carga
+  });   
+    
 
   constructor(private router: Router, private alertController: AlertController) { }
   
   async inicio(){
-    // Muestra la pantalla de carga
-    this.loading = true;
-
     // Obtiene el valor del rut y contraseña ingresados
-    const rutIngresado = this.alumno.value.rut;
-    const passIngresado = this.alumno.value.pass;
-
-    // Simula una demora para mostrar la pantalla de carga (elimina esto en la versión final)
-    await this.delay(2000);
+    const rutIngresado = this.usuario.value.rut;
+    const passIngresado = this.usuario.value.pass;
 
     // Busca al usuario en la lista de usuarios
     const usuario = usuarios.find((user) => user.rut === rutIngresado && user.contraseña === passIngresado);
@@ -54,40 +47,26 @@ export class LoginPage implements OnInit {
   
       await alert.present();
     }
-
-    // Oculta la pantalla de carga
-    this.loading = false;
-  }
-
-  // Función para simular una demora (elimina esto en la versión final)
-  private delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   redirigirSegunRol(rol: string, usuario: any) {
+    let setData: NavigationExtras = {
+      state: { user: this.usuario.value.rut }
+    };
     switch (rol) {
       case 'alumno':
-        this.router.navigate(['/home-alumno']);
+        this.router.navigate(['/home-alumno'], setData );
         break;
       case 'chofer':
         let chofer: NavigationExtras = {
-          state: { chofer: usuario }, // usuario es el objeto del chofer
+          state: { user: this.usuario.value.rut }, // usuario es el objeto del chofer
         };
         this.router.navigate(['/home-chofer'], chofer);
         break;
       default:
-        console.log('Rol no reconocido');
     }
   }
 
   ngOnInit() {
   }
 }
-
-
-
-
-
-
-
-

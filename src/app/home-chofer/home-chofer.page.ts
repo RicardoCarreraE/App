@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { usuarios } from '../usuarios';
+
 
 @Component({
   selector: 'app-home-chofer',
@@ -7,9 +9,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home-chofer.page.scss'],
 })
 export class HomeChoferPage implements OnInit {
-  chofer: any; // Declaración de la propiedad chofer
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  usuario: any; 
+  chofer: any;
+
+  constructor(private activatedRoute: ActivatedRoute) { 
+    this.activatedRoute.queryParams.subscribe((params)=>{
+      const userId = params['id'];
+      
+        this.usuario = usuarios.find((usuarios) => userId.id === parseInt(userId));
+      }
+  )};
+
 
   ngOnInit() {
     // Obtener el objeto de usuario del estado del enrutador

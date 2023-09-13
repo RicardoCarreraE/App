@@ -1,4 +1,6 @@
+
 <ion-content class="container" [fullscreen]="true">
+
   <ion-header [translucent]="true">
     <ion-toolbar>
       <ion-title id="title">
@@ -11,32 +13,36 @@
 
   </ion-header>
 
-  <form [formGroup]="alumno">
+  <form [formGroup]="usuario">
     <ion-item>
       <img id="user" src="/assets/user.png" alt=""style="margin-top: -20px; margin-bottom: -10px;">
     </ion-item>
-    <ion-item class="custom-input">
-      <ion-input formControlName="rut" id="rut-alumno" placeholder="{{textRut}}"></ion-input>
+
+    <ion-item>
+      <ion-input label="{{textRut}}" labelPlacement="floating" placeholder="{{desRut}}" formControlName="rut" id="rut-alumno"></ion-input>
+
     </ion-item>
-    
-    <ion-item class="custom-input">
-      <ion-input type="password" formControlName="pass" id="pass-alumno" placeholder="{{textPass}}"></ion-input>
+
+    <ion-item>
+      <ion-input label="{{textPass}}" type="password" labelPlacement="floating" placeholder="{{desPass}}" formControlName="pass" id="pass-alumno"></ion-input>
+
     </ion-item>
-    
-    
 
     <ion-button expand="block" color="success" fill="outline" (click)="inicio()">{{ingresar}}</ion-button>
+
 
     <ion-item>
       <p>¿Olvidó su Contraseña?</p> <a [routerLink]="['/restablecer']" id="olvido">Restablecer</a>
     </ion-item>
   </form>
 
+
   <!-- Div del auto para la animación -->
   <div class="car-animation" *ngIf="loading">
     <!-- Este div representa el auto y se moverá según la animación CSS -->
   </div>
 </ion-content>
+
 
 
 
