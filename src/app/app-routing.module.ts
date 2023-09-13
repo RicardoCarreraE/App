@@ -59,6 +59,11 @@ const routes: Routes = [
     path: '**',
     loadChildren: () => import('./notfound404/notfound404.module').then( m => m.Notfound404PageModule)
   },
+  {
+    path: 'viajes',
+    loadChildren: () => import('./viajes/viajes.module').then( m => m.ViajesPageModule)
+  },
+
 
 ];
 
