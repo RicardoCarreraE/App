@@ -56,13 +56,15 @@ const routes: Routes = [
     loadChildren: () => import('./auto-chofer/auto-chofer.module').then( m => m.AutoChoferPageModule)
   },
   {
-    path: '**',
-    loadChildren: () => import('./notfound404/notfound404.module').then( m => m.Notfound404PageModule)
-  },
-  {
     path: 'viajes',
     loadChildren: () => import('./viajes/viajes.module').then( m => m.ViajesPageModule)
   },
+
+  {
+    path: '**',
+    loadChildren: () => import('./notfound404/notfound404.module').then( m => m.Notfound404PageModule)
+  },
+
 
 
 ];

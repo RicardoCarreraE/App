@@ -1,13 +1,45 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>viajes</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content class="container" [fullscreen]="true">
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="large">viajes</ion-title>
+      <ion-buttons slot="start">
+        <!-- Botón "Volver" para regresar a la página anterior -->
+        <ion-back-button defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+        VIAJES
+      </ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Descripción del Viaje</ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Origen:</ion-label>
+          <ion-text>DUOC: Sede Antonio Varas</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Destino:</ion-label>
+          <ion-text>Metro Baquedano</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Chofer:</ion-label>
+          <ion-text>Juan Pérez</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Mapa del Viaje:</ion-label>
+        </ion-item>
+        <ion-item>
+          <img id="user" src="/assets/mapa.png" alt=""style="margin-top: -20px; margin-bottom: -10px;">
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-button expand="full" color="success">Tomar Viaje</ion-button>
+  </ion-content>
 </ion-content>
+
