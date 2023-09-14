@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- Botón "Volver" para regresar a la página anterior -->
+      <ion-back-button defaultHref="/home-chofer"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Crear Viajes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label position="stacked">Ingrese Destino</ion-label>
+    <ion-input type="text" placeholder="Destino"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Fecha del Viaje</ion-label>
+    <ion-datetime displayFormat="D MMM YYYY" placeholder="Fecha"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Hora de Inicio</ion-label>
+    <ion-datetime displayFormat="hh:mm A" placeholder="Hora de Inicio"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Hora de Término</ion-label>
+    <ion-datetime displayFormat="hh:mm A" placeholder="Hora de Término"></ion-datetime>
+  </ion-item>
+
+  <ion-button expand="full" color="success">Crear Viaje</ion-button>
+</ion-content>
+
