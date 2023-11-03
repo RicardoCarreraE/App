@@ -24,11 +24,11 @@
     </ion-item>
 
     <ion-item>
-      <ion-input label="{{textPass}}" type="password" labelPlacement="floating" placeholder="{{desPass}}" formControlName="pass" id="pass-alumno"></ion-input>
+      <ion-input label="{{textPass}}" type="password" labelPlacement="floating" placeholder="{{desPass}}" formControlName="contraseña" id="pass-alumno"></ion-input>
 
     </ion-item>
 
-    <ion-button expand="block" color="success" fill="outline" (click)="inicio()">{{ingresar}}</ion-button>
+    <ion-button expand="block" color="success" [disabled]="!usuario.valid"  (click)="inicio()" fill="outline">{{textBtn}}</ion-button>
 
 
     <ion-item>

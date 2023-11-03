@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NavigationExtras, Router } from '@angular/router';
-import { usuarios } from '../usuarios'; // Importa el archivo de datos de usuarios
+import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { ConsumoapiService } from '../service/consumoapi.service';
+import { usuario } from '../modelo/usuario';
 
 @Component({
   selector: 'app-login',
@@ -11,76 +12,61 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
   loading = false;
+  private typeuser!: usuario;
   textRut = "Rut";
   textPass = "Contraseña";
   desRut = "Ingrese Rut";
   desPass = "Ingrese Contraseña";
-  ingresar = "Ingresar";
+  textBtn: string = 'Ingresar';
   crearCta = "Crear Cuenta";
 
-  usuario = new FormGroup ({
-    rut: new FormControl('',[Validators.required, Validators.minLength(1), Validators.maxLength(12)]),
-    pass: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
-    nombre: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
-    correo: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
-    telefono: new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
-  });   
-    
+  usuario = new FormGroup({
+    rut: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(12)]),
+    contraseña: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
+  });
 
-  constructor(private router: Router, private alertController: AlertController) { }
-  
-  async inicio(){
-    // Establece loading en true para mostrar la animación
+
+
+  async inicio() {
     this.loading = true;
-  
-    // Obtiene el valor del rut y contraseña ingresados
-    const rutIngresado = this.usuario.value.rut;
-    const passIngresado = this.usuario.value.pass;
-  
-    // Simula una demora de 2 segundos para la lógica de inicio de sesión (debes ajustar esto)
-    setTimeout(async () => {
-      // Simulación de inicio de sesión exitoso
-      const usuario = usuarios.find((user) => user.rut === rutIngresado && user.contraseña === passIngresado);
-  
-      if (usuario) {
-        // Redirige al usuario al perfil correspondiente según su rol
-        this.redirigirSegunRol(usuario.rol, usuario);
-      } else {
-        // Las credenciales son incorrectas, muestra una alerta
-        const alert = await this.alertController.create({
-          header: 'Credenciales Incorrectas',
-          message: 'Por favor, vuelva a intentar.',
-          buttons: ['OK']
-        });
-  
-        await alert.present();
-      }
-  
-      // Establece loading en false después de completar la acción
-      this.loading = false;
-    }, 1200);   }
 
-    redirigirSegunRol(rol: string, usuario: any) {
-      let rutaInicio = '';
-    
-      switch (rol) {
-        case 'alumno':
-          rutaInicio = '/home-alumno';
-          break;
-        case 'chofer':
-          rutaInicio = '/home-chofer';
-          break;
-        default:
-          rutaInicio = '/login'; // Redirige al login si el rol es desconocido
+  
+    this.consumoapiService.login(this.usuario.value.rut!, this.usuario.value.contraseña!).subscribe(
+      (response) => {
+        if (response && response.body) {
+          if (response.body.message === "Inicio de sesión como alumno exitoso") {
+            this.router.navigate(['/home-alumno']);
+          } else if (response.body.message === "Inicio de sesión como chofer exitoso") {
+            this.router.navigate(['/home-chofer']);
+          } else {
+            this.presentAlert('Credenciales incorrectas', 'Por favor, vuelve a intentarlo.');
+          }
+        } else {
+          this.presentAlert('Error', 'Ocurrió un error durante el inicio de sesión.');
+        }
+        this.loading = false;
+      },
+      (error) => {
+        console.error('Error en inicio de sesión:', error.error); // Muestra el mensaje de error específico recibido del servidor
+        this.loading = false;
       }
-    
-      const navigationExtras: NavigationExtras = {
-        state: { user: usuario }
-      };
-    
-      this.router.navigate([rutaInicio], navigationExtras);
-    }
-
-  ngOnInit() {
+    )
   }
+  
+  async presentAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
+  constructor(
+    private router: Router,
+    private consumoapiService: ConsumoapiService,
+    private alertController: AlertController
+  ) {}
+
+  ngOnInit() {}
 }

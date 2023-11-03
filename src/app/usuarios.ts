@@ -1,4 +1,4 @@
-export const usuarios = [
+/*export const usuarios = [
   {
     id: 1,
     rut: '12345678-9',
@@ -79,6 +79,4 @@ export const usuarios = [
 
 function obtenerUsuario(id: any, number: any) {
   throw new Error("Function not implemented.");
-}
-
-  
+}*/

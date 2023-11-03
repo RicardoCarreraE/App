@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { ConsumoapiService } from '../service/consumoapi.service';
 @Component({
   selector: 'app-home-alumno',
   templateUrl: './home-alumno.page.html',

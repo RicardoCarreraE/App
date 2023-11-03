@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { usuarios } from '../usuarios';
+import { usuario } from '../modelo/usuario';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-perfil-chofer',
@@ -22,10 +22,5 @@ export class PerfilChoferPage implements OnInit {
   }
 
   ngOnInit() {
-    // Recupera los datos del alumno logueado desde usuarios.ts
-    // Puedes utilizar alguna lógica para identificar al alumno específico, por ejemplo, su nombre.
-    // Aquí se asume que utilizas el nombre para identificar al alumno.
-    const nombreAlumnoLogueado = 'Nombre del alumno logueado'; // Reemplaza con el nombre real del alumno logueado
-    this.alumno = usuarios.find((user) => user.nombre === nombreAlumnoLogueado) || this.alumno;
   }
 }
